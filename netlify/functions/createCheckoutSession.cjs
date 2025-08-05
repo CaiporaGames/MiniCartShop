@@ -1,5 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
+const siteURL = 'https://minicartshoptimoteo.netlify.app'; 
 exports.handler = async (event) => {
   const items = JSON.parse(event.body);
 
@@ -14,8 +14,8 @@ exports.handler = async (event) => {
       quantity: item.quantity,
     })),
     mode: 'payment',
-    success_url: 'https://YOUR_SITE_NAME.netlify.app/success',
-    cancel_url: 'https://YOUR_SITE_NAME.netlify.app/cancel',
+    success_url: `${siteURL}/success`,
+    cancel_url: `${siteURL}/cancel`,
   });
 
   return {
