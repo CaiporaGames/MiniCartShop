@@ -13,10 +13,12 @@ export default function Cart({
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleCheckout = async () => {
-    const res = await fetch('/.netlify/functions/createCheckoutSession', {
-      method: 'POST',
-      body: JSON.stringify(cartItems),
-    });
+    const res = await fetch('http://localhost:4242/create-checkout-session', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(cartItems),
+});
+
 
     const { url } = await res.json();
     window.location.href = url;
