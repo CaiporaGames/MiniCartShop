@@ -1,4 +1,3 @@
-// netlify/functions/createCheckoutSession.js
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
@@ -8,15 +7,15 @@ exports.handler = async (event) => {
     payment_method_types: ['card'],
     line_items: items.map(item => ({
       price_data: {
-        currency: 'usd',
+        currency: 'eur',
         product_data: { name: item.name },
         unit_amount: item.price,
       },
       quantity: item.quantity,
     })),
     mode: 'payment',
-    success_url: 'https://yoursite.netlify.app/success',
-    cancel_url: 'https://yoursite.netlify.app/cancel',
+    success_url: 'https://YOUR_SITE_NAME.netlify.app/success',
+    cancel_url: 'https://YOUR_SITE_NAME.netlify.app/cancel',
   });
 
   return {

@@ -1,6 +1,5 @@
 // src/components/Cart.tsx
 import type { CartItem } from '../App';
-
 export default function Cart({
   cartItems,
   onUpdate,
@@ -13,7 +12,7 @@ export default function Cart({
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleCheckout = async () => {
-    const res = await fetch('http://localhost:4242/create-checkout-session', {
+    const res = await fetch('/.netlify/functions/createCheckoutSession', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(cartItems),
