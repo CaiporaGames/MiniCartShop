@@ -1,5 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const siteURL = 'https://minicartshoptimoteo.netlify.app'; 
+const siteURL = process.env.SITE_URL;
 exports.handler = async (event) => {
   const items = JSON.parse(event.body);
 
