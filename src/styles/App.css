@@ -1,0 +1,18 @@
+.main-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Optional: limit widths */
+.products {
+  flex: 2;
+}
+
+.cart {
+  flex: 1;
+  max-width: 300px;
+  position: sticky;
+  top: 1rem;
+}

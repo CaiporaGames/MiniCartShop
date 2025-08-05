@@ -1,5 +1,7 @@
 // src/components/Cart.tsx
 import type { CartItem } from '../App';
+import '../styles/Cart.css';
+
 export default function Cart({
   cartItems,
   onUpdate,
@@ -24,7 +26,7 @@ export default function Cart({
   };
 
   return (
-    <div>
+    <div className="cart">
       <h2>Your Cart</h2>
       {cartItems.length === 0 ? <p>No items in cart.</p> : (
         <ul>
@@ -37,13 +39,13 @@ export default function Cart({
                 value={item.quantity}
                 onChange={e => onUpdate(item.id, parseInt(e.target.value))}
               />
-              <button onClick={() => onRemove(item.id)}>Remove</button>
+              <button className='cart-button' onClick={() => onRemove(item.id)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
       <p>Total: €{(total / 100).toFixed(2)}</p>
-      {cartItems.length > 0 && <button onClick={handleCheckout}>Checkout</button>}
+      {cartItems.length > 0 && <button className='checkout' onClick={handleCheckout}>Checkout</button>}
     </div>
   );
 }

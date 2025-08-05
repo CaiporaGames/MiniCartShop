@@ -1,5 +1,6 @@
 // src/components/ProductList.tsx
 import type { CartItem } from '../App';
+import '../styles/ProductList.css';
 
 type Product = Omit<CartItem, 'quantity'>;
 
@@ -11,9 +12,9 @@ export default function ProductList({
   onAdd: (product: Product) => void;
 }) {
   return (
-    <div style={{ display: 'flex', gap: '1rem' }}>
+    <div className="products">
       {products.map(product => (
-        <div key={product.id} style={{ border: '1px solid #ccc', padding: '1rem' }}>
+        <div key={product.id} className="product-card">
           <img src={product.image} alt={product.name} width={100} />
           <h3>{product.name}</h3>
           <p>€{(product.price / 100).toFixed(2)}</p>

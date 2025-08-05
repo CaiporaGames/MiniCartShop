@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { products } from './data/products';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
+import './styles/App.css';
 
 export type CartItem = {
   id: string;
@@ -44,10 +45,16 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>MiniCart Shop 🛒</h1>
-      <ProductList products={products} onAdd={addToCart} />
-      <Cart cartItems={cart} onUpdate={updateQuantity} onRemove={removeFromCart} />
+      <div className="main-content">
+        <ProductList products={products} onAdd={addToCart} />
+        <Cart
+          cartItems={cart}
+          onUpdate={updateQuantity}
+          onRemove={removeFromCart}
+        />
+      </div>
     </div>
   );
 }
